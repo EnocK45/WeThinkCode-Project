@@ -1,20 +1,73 @@
-# ai-code-exercises
+# Task Management System
 
-Code Exercises for AI Course for Software Engineers.
+## Usage Instructions
+### Prerequisites
+- Python 3.11 or higher
+- No additional external dependencies required
 
-This is still a work in progress - the idea is to capture the various exercise starter code examples in here.
+### Installation
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd task-manager
+```
 
-## Exercises
+2. No additional installation steps required as the project uses Python standard library.
 
- Use Case | Exercise | Instructions | Starter Code |
-| --- | --- | --- | --- |
-| Code Comprehension | Code Explore Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-comprehension-001/) | [Starter Code](use-cases/code-comprehension-001/README.md) |
-| Code Comprehension | Algorithm Deconstruction Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-algorithms/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Code Comprehension | Knowing Where to Start | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-comprehension-002/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Documenting Code | Code Documentation | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-doc-code/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Documenting Code |README documentation | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-doc-readme/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Debugging | Error Diagnosis Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-debug-errors-001/) | [Starter Code](use-cases/debug-errors-001/README.md) |
-| Debugging | Performance Optimization Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-performance/) | [Starter Code](use-cases/debug-performance/README.md) |
-| Debugging | AI Solution Verification Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-debug-limitations/) | [Starter Code](use-cases/debug-limitations/README.md) |
-| Testing | Using AI to help with testing | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-testing-001/) | [Starter Code](use-cases/testing-001) |
-| Refactoring | Function Decomposition Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-refactor-functions/) | [Starter Code](use-cases/refactor-functions) |
+### Run the CLI
+
+The CLI provides various commands to manage tasks:
+
+1. Create a new task:
+```bash
+python cli.py create "Task Title" --description "Task description" --priority 2 --due "2024-01-31" --tags "tag1,tag2"
+```
+
+2. List tasks:
+```bash
+# List all tasks
+python cli.py list
+
+# List by status (todo, in_progress, review, done)
+python cli.py list --status todo
+
+# List by priority (1=LOW, 2=MEDIUM, 3=HIGH, 4=URGENT)
+python cli.py list --priority 3
+
+# List overdue tasks
+python cli.py list --overdue
+```
+
+3. Update tasks:
+```bash
+# Update task status
+python cli.py update-status <task_id> <new_status>
+
+# Update task priority
+python cli.py update-priority <task_id> <new_priority>
+
+# Update due date
+python cli.py update-due-date <task_id> "2024-02-15"
+```
+
+4. Manage tags:
+```bash
+# Add a tag
+python cli.py add-tag <task_id> "new-tag"
+
+# Remove a tag
+python cli.py remove-tag <task_id> "tag-to-remove"
+```
+
+5. View task details and statistics:
+```bash
+# Show task details
+python cli.py show <task_id>
+
+# Show task statistics
+python cli.py stats
+```
+
+### Run the Tests
+
+TODO
