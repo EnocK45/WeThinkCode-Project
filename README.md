@@ -1,73 +1,90 @@
-# Task Management System
+# Task Manager Assignment
 
-## Usage Instructions
-### Prerequisites
-- Python 3.11 or higher
-- No additional external dependencies required
+---
 
-### Installation
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd task-manager
-```
+## Exercise 1: Function Understanding
 
-2. No additional installation steps required as the project uses Python standard library.
+### Prompt
+Explain the following Python function in simple terms. Focus on:
+1. What the function does  
+2. The purpose of each parameter  
+3. What it returns  
+4. Any important logic or validation  
 
-### Run the CLI
+### Response
+The `create_task` function is used to create a new task in the system. It takes inputs such as title, description, priority, due date, and tags.
 
-The CLI provides various commands to manage tasks:
+- title: The name of the task  
+- description: Extra details about the task  
+- priority_value: The importance level of the task  
+- due_date_str: The due date in string format (YYYY-MM-DD)  
+- tags: A list of labels for the task  
 
-1. Create a new task:
-```bash
-python cli.py create "Task Title" --description "Task description" --priority 2 --due "2024-01-31" --tags "tag1,tag2"
-```
+The function converts the priority into a priority object and attempts to convert the due date string into a date format. If the date format is incorrect, it prints an error and returns None.
 
-2. List tasks:
-```bash
-# List all tasks
-python cli.py list
+If everything is valid, a new Task object is created and saved using the storage system. The function then returns the unique ID of the created task.
 
-# List by status (todo, in_progress, review, done)
-python cli.py list --status todo
+---
 
-# List by priority (1=LOW, 2=MEDIUM, 3=HIGH, 4=URGENT)
-python cli.py list --priority 3
+## Exercise 2: API Documentation
 
-# List overdue tasks
-python cli.py list --overdue
-```
+### Prompt
+Please create comprehensive documentation for this API endpoint.
 
-3. Update tasks:
-```bash
-# Update task status
-python cli.py update-status <task_id> <new_status>
+### Response
 
-# Update task priority
-python cli.py update-priority <task_id> <new_priority>
+Endpoint: POST /tasks  
 
-# Update due date
-python cli.py update-due-date <task_id> "2024-02-15"
-```
+Description:  
+This endpoint creates a new task in the task management system.
 
-4. Manage tags:
-```bash
-# Add a tag
-python cli.py add-tag <task_id> "new-tag"
+Request Parameters:
+- title (string): Task title  
+- description (string): Task description  
+- priority_value (int): Priority level  
+- due_date_str (string): Due date (YYYY-MM-DD)  
+- tags (list): Task tags  
 
-# Remove a tag
-python cli.py remove-tag <task_id> "tag-to-remove"
-```
+Response (Success):
+{
+  "task_id": 1,
+  "message": "Task created successfully"
+}
 
-5. View task details and statistics:
-```bash
-# Show task details
-python cli.py show <task_id>
+Response (Error):
+{
+  "error": "Invalid date format. Use YYYY-MM-DD"
+}
 
-# Show task statistics
-python cli.py stats
-```
+Authentication:
+No authentication is required.
 
-### Run the Tests
+---
 
-TODO
+## Exercise 3: Code Logic Analysis
+
+### Prompt
+Explain the intent and logic behind this code.
+
+### Response
+
+The code defines a TaskManager class that manages tasks in a task management system.
+
+- It allows creating, updating, deleting, and viewing tasks.
+- The create_task method creates new tasks and saves them.
+- The list_tasks method retrieves tasks.
+- The update_task_status method updates task status.
+
+The system uses a storage component (TaskStorage) to store tasks.
+
+Assumptions and Edge Cases:
+- Date must be in YYYY-MM-DD format  
+- Invalid date returns error  
+- Task must exist to update/delete  
+
+Improvements:
+- Better error handling  
+- Input validation  
+- Use logging instead of print  
+
+---
